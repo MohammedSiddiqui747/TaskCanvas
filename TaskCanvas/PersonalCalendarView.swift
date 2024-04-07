@@ -3,19 +3,17 @@ import SwiftUI
 
 struct PersonalCalendarView: View {
     var body: some View {
-        NavigationLink(destination: SummaryView()) {
-                Text("Personal")
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(
-                        LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple, Color.purple]), startPoint: .leading, endPoint: .trailing)
-                            .cornerRadius(20)
-                    )
+        Text("Personal")
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .fontWeight(.bold)
+            .padding()
+            .foregroundColor(.white)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple, Color.purple]), startPoint: .leading, endPoint: .trailing)
                     .cornerRadius(20)
-                    .shadow(radius: 10)
-        }
+            )
+            .cornerRadius(20)
+            .shadow(radius: 10)
             .padding(.horizontal, 20)
         CalendarView()
             .padding(.horizontal, 20)

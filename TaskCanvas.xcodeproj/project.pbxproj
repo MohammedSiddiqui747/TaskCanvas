@@ -8,17 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		3BF687C42B96AC940005A01B /* TaskCanvasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687C32B96AC940005A01B /* TaskCanvasApp.swift */; };
-		3BF687C62B96AC940005A01B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687C52B96AC940005A01B /* ContentView.swift */; };
 		3BF687C82B96AC950005A01B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BF687C72B96AC950005A01B /* Assets.xcassets */; };
 		3BF687CB2B96AC950005A01B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BF687CA2B96AC950005A01B /* Preview Assets.xcassets */; };
+		3BF687D22B96B18E0005A01B /* SunkenBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687D12B96B18E0005A01B /* SunkenBoxView.swift */; };
+		3BF687D62B96B1A80005A01B /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687D52B96B1A80005A01B /* SummaryView.swift */; };
+		3BF687D82B96B1AE0005A01B /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687D72B96B1AE0005A01B /* SignupView.swift */; };
+		3BF687DA2B96B1C00005A01B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687D92B96B1C00005A01B /* ContentView.swift */; };
+		3BF687DC2B96B1C70005A01B /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687DB2B96B1C70005A01B /* SigninView.swift */; };
+		3BF687DE2B96B1CD0005A01B /* ProfessionalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687DD2B96B1CC0005A01B /* ProfessionalCalendarView.swift */; };
+		3BF687E02B96B1D20005A01B /* PersonalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687DF2B96B1D20005A01B /* PersonalCalendarView.swift */; };
+		3BF687E42B96B1E10005A01B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687E32B96B1E10005A01B /* CalendarView.swift */; };
+		3BF687E62B96B1E70005A01B /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687E52B96B1E70005A01B /* AddItemView.swift */; };
+		3BF687E82B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687E72B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3BF687C02B96AC940005A01B /* TaskCanvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskCanvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BF687C32B96AC940005A01B /* TaskCanvasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCanvasApp.swift; sourceTree = "<group>"; };
-		3BF687C52B96AC940005A01B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3BF687C72B96AC950005A01B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BF687CA2B96AC950005A01B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3BF687D12B96B18E0005A01B /* SunkenBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunkenBoxView.swift; sourceTree = "<group>"; };
+		3BF687D52B96B1A80005A01B /* SummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		3BF687D72B96B1AE0005A01B /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		3BF687D92B96B1C00005A01B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3BF687DB2B96B1C70005A01B /* SigninView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
+		3BF687DD2B96B1CC0005A01B /* ProfessionalCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfessionalCalendarView.swift; sourceTree = "<group>"; };
+		3BF687DF2B96B1D20005A01B /* PersonalCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalCalendarView.swift; sourceTree = "<group>"; };
+		3BF687E32B96B1E10005A01B /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		3BF687E52B96B1E70005A01B /* AddItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		3BF687E72B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyAndFriendsCalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +70,16 @@
 			isa = PBXGroup;
 			children = (
 				3BF687C32B96AC940005A01B /* TaskCanvasApp.swift */,
-				3BF687C52B96AC940005A01B /* ContentView.swift */,
+				3BF687D92B96B1C00005A01B /* ContentView.swift */,
+				3BF687DB2B96B1C70005A01B /* SigninView.swift */,
+				3BF687D72B96B1AE0005A01B /* SignupView.swift */,
+				3BF687D12B96B18E0005A01B /* SunkenBoxView.swift */,
+				3BF687E32B96B1E10005A01B /* CalendarView.swift */,
+				3BF687D52B96B1A80005A01B /* SummaryView.swift */,
+				3BF687DD2B96B1CC0005A01B /* ProfessionalCalendarView.swift */,
+				3BF687DF2B96B1D20005A01B /* PersonalCalendarView.swift */,
+				3BF687E72B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift */,
+				3BF687E52B96B1E70005A01B /* AddItemView.swift */,
 				3BF687C72B96AC950005A01B /* Assets.xcassets */,
 				3BF687C92B96AC950005A01B /* Preview Content */,
 			);
@@ -137,8 +164,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BF687C62B96AC940005A01B /* ContentView.swift in Sources */,
+				3BF687E42B96B1E10005A01B /* CalendarView.swift in Sources */,
+				3BF687D62B96B1A80005A01B /* SummaryView.swift in Sources */,
+				3BF687DA2B96B1C00005A01B /* ContentView.swift in Sources */,
+				3BF687DC2B96B1C70005A01B /* SigninView.swift in Sources */,
+				3BF687E82B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift in Sources */,
+				3BF687D22B96B18E0005A01B /* SunkenBoxView.swift in Sources */,
 				3BF687C42B96AC940005A01B /* TaskCanvasApp.swift in Sources */,
+				3BF687DE2B96B1CD0005A01B /* ProfessionalCalendarView.swift in Sources */,
+				3BF687E02B96B1D20005A01B /* PersonalCalendarView.swift in Sources */,
+				3BF687E62B96B1E70005A01B /* AddItemView.swift in Sources */,
+				3BF687D82B96B1AE0005A01B /* SignupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
