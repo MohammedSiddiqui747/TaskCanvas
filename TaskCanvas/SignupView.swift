@@ -1,41 +1,81 @@
-import Foundation
 import SwiftUI
+import Firebase
 
 struct SignupView: View {
-    // State variables to store the username and password
-    @State private var username: String = "MockUser" // Pre-input mock data for username
-    @State private var password: String = "MockPassword" // Pre-input mock data for password
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var confirmPassword: String = ""
+    @State private var errorMessage: String?
+    @State private var showingSuccessAlert = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text("Username")
-                .fontWeight(.semibold)
-            TextField("Username", text: $username)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Text("Password")
-                .fontWeight(.semibold)
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.bottom, 20)
-            Text("Confirm Password")
-                .fontWeight(.semibold)
-            SecureField("Confirm Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.bottom, 20)
-            NavigationLink(destination: SummaryView()) {
-                Text("Sign up")
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.green)
-                    .cornerRadius(20)
+        NavigationView {
+            VStack(alignment: .leading, spacing: 15) {
+                TextField("Enter your email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
+                    .keyboardType(.emailAddress)
+                
+                SecureField("Enter your password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                SecureField("Confirm your password", text: $confirmPassword)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .padding(.top, 5)
+                }
+
+                Button("Sign up") {
+                    handleSignup()
+                }
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(20)
+                .padding(.top, 20)
+            }
+            .padding()
+            .navigationBarTitle("Sign Up", displayMode: .inline)
+            .alert(isPresented: $showingSuccessAlert) {
+                Alert(title: Text("Signup Successful"), message: Text("You have successfully signed up. Please log in."), dismissButton: .default(Text("OK")))
             }
         }
-        .padding(50)
-        .navigationBarTitle("Sign up", displayMode: .inline) // Adds a title to the navigation bar
+    }
+
+    private func handleSignup() {
+        guard email.isEmpty == false, password.isEmpty == false else {
+            errorMessage = "Email and password must not be empty"
+            return
+        }
+        guard password == confirmPassword else {
+            errorMessage = "Passwords do not match"
+            return
+        }
+
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.errorMessage = error.localizedDescription
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.email = ""
+                    self.password = ""
+                    self.confirmPassword = ""
+                    self.errorMessage = nil
+                    self.showingSuccessAlert = true
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    SignupView()
+struct SignupView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignupView()
+    }
 }
