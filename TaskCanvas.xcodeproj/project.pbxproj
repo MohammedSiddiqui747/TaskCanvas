@@ -11,6 +11,15 @@
 		3BF687C62B96AC940005A01B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687C52B96AC940005A01B /* ContentView.swift */; };
 		3BF687C82B96AC950005A01B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BF687C72B96AC950005A01B /* Assets.xcassets */; };
 		3BF687CB2B96AC950005A01B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BF687CA2B96AC950005A01B /* Preview Assets.xcassets */; };
+		8445B5FA2BC34A1D000C042C /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B5F92BC34A1D000C042C /* AddItemView.swift */; };
+		8445B6042BC34A73000C042C /* PersonalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B5FB2BC34A72000C042C /* PersonalCalendarView.swift */; };
+		8445B6052BC34A73000C042C /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B5FC2BC34A72000C042C /* SummaryView.swift */; };
+		8445B6062BC34A73000C042C /* SunkenBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B5FD2BC34A72000C042C /* SunkenBoxView.swift */; };
+		8445B6072BC34A73000C042C /* FamilyAndFriendsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B5FE2BC34A72000C042C /* FamilyAndFriendsCalendarView.swift */; };
+		8445B6092BC34A73000C042C /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B6002BC34A72000C042C /* SigninView.swift */; };
+		8445B60A2BC34A73000C042C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B6012BC34A73000C042C /* CalendarView.swift */; };
+		8445B60B2BC34A73000C042C /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B6022BC34A73000C042C /* SignupView.swift */; };
+		8445B60C2BC34A73000C042C /* ProfessionalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445B6032BC34A73000C042C /* ProfessionalCalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +28,15 @@
 		3BF687C52B96AC940005A01B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3BF687C72B96AC950005A01B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BF687CA2B96AC950005A01B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8445B5F92BC34A1D000C042C /* AddItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddItemView.swift; path = ../AddItemView.swift; sourceTree = "<group>"; };
+		8445B5FB2BC34A72000C042C /* PersonalCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalCalendarView.swift; path = ../../../../Downloads/PersonalCalendarView.swift; sourceTree = "<group>"; };
+		8445B5FC2BC34A72000C042C /* SummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryView.swift; path = ../../../../Downloads/SummaryView.swift; sourceTree = "<group>"; };
+		8445B5FD2BC34A72000C042C /* SunkenBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SunkenBoxView.swift; path = ../../../../Downloads/SunkenBoxView.swift; sourceTree = "<group>"; };
+		8445B5FE2BC34A72000C042C /* FamilyAndFriendsCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FamilyAndFriendsCalendarView.swift; path = ../../../../Downloads/FamilyAndFriendsCalendarView.swift; sourceTree = "<group>"; };
+		8445B6002BC34A72000C042C /* SigninView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SigninView.swift; path = ../../../../Downloads/SigninView.swift; sourceTree = "<group>"; };
+		8445B6012BC34A73000C042C /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = ../../../../Downloads/CalendarView.swift; sourceTree = "<group>"; };
+		8445B6022BC34A73000C042C /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupView.swift; path = ../../../../Downloads/SignupView.swift; sourceTree = "<group>"; };
+		8445B6032BC34A73000C042C /* ProfessionalCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfessionalCalendarView.swift; path = ../../../../Downloads/ProfessionalCalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +70,17 @@
 			isa = PBXGroup;
 			children = (
 				3BF687C32B96AC940005A01B /* TaskCanvasApp.swift */,
+				8445B6012BC34A73000C042C /* CalendarView.swift */,
 				3BF687C52B96AC940005A01B /* ContentView.swift */,
 				3BF687C72B96AC950005A01B /* Assets.xcassets */,
+				8445B5FE2BC34A72000C042C /* FamilyAndFriendsCalendarView.swift */,
+				8445B5FB2BC34A72000C042C /* PersonalCalendarView.swift */,
+				8445B6032BC34A73000C042C /* ProfessionalCalendarView.swift */,
+				8445B6002BC34A72000C042C /* SigninView.swift */,
+				8445B6022BC34A73000C042C /* SignupView.swift */,
+				8445B5FC2BC34A72000C042C /* SummaryView.swift */,
+				8445B5FD2BC34A72000C042C /* SunkenBoxView.swift */,
+				8445B5F92BC34A1D000C042C /* AddItemView.swift */,
 				3BF687C92B96AC950005A01B /* Preview Content */,
 			);
 			path = TaskCanvas;
@@ -137,7 +164,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8445B60A2BC34A73000C042C /* CalendarView.swift in Sources */,
 				3BF687C62B96AC940005A01B /* ContentView.swift in Sources */,
+				8445B5FA2BC34A1D000C042C /* AddItemView.swift in Sources */,
+				8445B6092BC34A73000C042C /* SigninView.swift in Sources */,
+				8445B6052BC34A73000C042C /* SummaryView.swift in Sources */,
+				8445B6042BC34A73000C042C /* PersonalCalendarView.swift in Sources */,
+				8445B60C2BC34A73000C042C /* ProfessionalCalendarView.swift in Sources */,
+				8445B6062BC34A73000C042C /* SunkenBoxView.swift in Sources */,
+				8445B6072BC34A73000C042C /* FamilyAndFriendsCalendarView.swift in Sources */,
+				8445B60B2BC34A73000C042C /* SignupView.swift in Sources */,
 				3BF687C42B96AC940005A01B /* TaskCanvasApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
