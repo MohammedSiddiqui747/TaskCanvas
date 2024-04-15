@@ -1,8 +1,8 @@
 //
 //  FireDBHelper.swift
-//  CollegeDelivery
+//  TaskCanvas
 //
-//  Created by Mohammed Siddiqui.
+//  Created by Mohammed Siddiqui on 2024-04-14.
 //
 
 import Foundation
@@ -10,8 +10,7 @@ import FirebaseFirestore
 
 class FireDBHelper : ObservableObject{
     
-    @Published var itemList = [Item]()
-    @Published var reqItemList = [Item]()
+    @Published var taskList = [Task]()
     
     private let db : Firestore
     
@@ -20,10 +19,11 @@ class FireDBHelper : ObservableObject{
     
     private static var shared : FireDBHelper?
     
-    private let COLLECTION_NAME = "Items"
-    private let COLLECTION_REQ = "ReqItems"
-    private let ATTRIBUTE_INAME = "itemName"
-    private let ATTRIBUTE_IDESC = "itemDesc"
+    private let COLLECTION_TASK = "Task"
+    private let ATTRIBUTE_TNAME = "taskName"
+    private let ATTRIBUTE_TDESC = "taskDesc"
+    private let ATTRIBUTE_TTYPE = "taskType"
+    private let ATTRIBUTE_TDATE = "taskDate"
     private let ATTRIBUTE_UEMAIL = "userEmail"
 
     
@@ -41,68 +41,43 @@ class FireDBHelper : ObservableObject{
     }
     
     
-    func insertItem(item : Item){
+    func insertTask(task : Task){
         do{
             
-            try self.db.collection(COLLECTION_NAME).addDocument(from: item)
+            try self.db.collection(COLLECTION_TASK).addDocument(from: task)
             
         }catch let err as NSError{
             print(#function, "Unable to insert : \(err)")
         }
     }
     
-    func insertReqItem(item : Item){
-        do{
-            
-            try self.db.collection(COLLECTION_REQ).addDocument(from: item)
-            
-        }catch let err as NSError{
-            print(#function, "Unable to insert : \(err)")
-        }
-    }
     
-    func deleteItem(docIDtoDelete: String) {
-        self.db.collection(COLLECTION_NAME).document(docIDtoDelete).delete { error in
+    func deleteTask(docIDtoDelete: String) {
+        self.db.collection(COLLECTION_TASK).document(docIDtoDelete).delete { error in
             if let err = error {
                 print(#function, "Unable to delete : \(err)")
             } else {
                 print(#function, "Document deleted successfully")
                 DispatchQueue.main.async {
                     // Ensure the deletion is also reflected in itemList
-                    self.itemList.removeAll { $0.id == docIDtoDelete }
+                    self.taskList.removeAll { $0.id == docIDtoDelete }
                 }
             }
         }
     }
     
-    func deleteReqItem(docIDtoDelete: String) {
-        // First, remove the item from the local list for immediate UI update
-        DispatchQueue.main.async {
-            self.reqItemList.removeAll { $0.id == docIDtoDelete }
-        }
-
-        // Then, perform the Firestore deletion
-        self.db.collection(COLLECTION_REQ).document(docIDtoDelete).delete { error in
-            if let err = error {
-                print(#function, "Unable to delete : \(err)")
-                // Optionally, handle re-adding the item or notifying the user upon error
-            } else {
-                print(#function, "Document deleted successfully")
-            }
-        }
-    }
     
-    func retrieveAllItems(){
+    func retrieveAllTasks(){
         
         do{
             
             self.db
-                .collection(COLLECTION_NAME)
-                .order(by: ATTRIBUTE_INAME, descending: true)
+                .collection(COLLECTION_TASK)
+                .order(by: ATTRIBUTE_TNAME, descending: true)
                 .addSnapshotListener( { (snapshot, error) in
                     
                     guard let result = snapshot else{
-                        print(#function, "Unable to retrieve snapshot : \(String(describing: error))")
+                        print(#function, "Unable to retrieve snapshot : \(error)")
                         return
                     }
                     
@@ -112,12 +87,12 @@ class FireDBHelper : ObservableObject{
                         
                         do{
                             //obtain the document as Student class object
-                            let item = try docChange.document.data(as: Item.self)
+                            let task = try docChange.document.data(as: Task.self)
                             
-                            print(#function, "item from db : id : \(String(describing: item.id)) name : \(item.itemName)")
+                            print(#function, "task from db : id : \(task.id) name : \(task.taskName)")
                             
                             //check if the changed document is already in the list
-                            let matchedIndex = self.itemList.firstIndex(where: { ($0.id?.elementsEqual(item.id!))!})
+                            let matchedIndex = self.taskList.firstIndex(where: { ($0.id?.elementsEqual(task.id!))!})
                             
                             if docChange.type == .added{
                                 
@@ -125,14 +100,14 @@ class FireDBHelper : ObservableObject{
                                     //the document object is already in the list
                                     //do nothing to avoid duplicates
                                 }else{
-                                    self.itemList.append(item)
+                                    self.taskList.append(task)
                                 }
                                 
-                                print(#function, "New document added : \(item)")
+                                print(#function, "New document added : \(task)")
                             }
                             
                             if docChange.type == .modified{
-                                print(#function, "Document updated : \(item)")
+                                print(#function, "Document updated : \(task)")
                                 
 //                                if (matchedIndex != nil){
 //                                    //the document object is already in the list
@@ -142,7 +117,7 @@ class FireDBHelper : ObservableObject{
                             }
                             
                             if docChange.type == .removed{
-                                print(#function, "Document deleted : \(item)")
+                                print(#function, "Document deleted : \(task)")
                                 
 //                                if (matchedIndex != nil){
 //                                    //the document object is still in the list
@@ -158,100 +133,23 @@ class FireDBHelper : ObservableObject{
                     }
                 })
             
-        }
-        /*
-        catch let err as NSError{
+        } catch let err as NSError{
             print(#function, "Unable to retrieve \(err)" )
         }
-         */
         
     }
     
-    func retrieveAllReqItems(){
-        
-        do{
-            
-            self.db
-                .collection(COLLECTION_REQ)
-                .order(by: ATTRIBUTE_INAME, descending: true)
-                .addSnapshotListener( { (snapshot, error) in
-                    
-                    guard let result = snapshot else{
-                        print(#function, "Unable to retrieve snapshot : \(String(describing: error))")
-                        return
-                    }
-                    
-                    print(#function, "Result : \(result)")
-                    
-                    result.documentChanges.forEach{ (docChange) in
-                        
-                        do{
-                            //obtain the document as Student class object
-                            let item = try docChange.document.data(as: Item.self)
-                            
-                            print(#function, "item from db : id : \(String(describing: item.id)) name : \(item.itemName)")
-                            
-                            //check if the changed document is already in the list
-                            let matchedIndex = self.reqItemList.firstIndex(where: { ($0.id?.elementsEqual(item.id!))!})
-                            
-                            if docChange.type == .added{
-                                
-                                if (matchedIndex != nil){
-                                    //the document object is already in the list
-                                    //do nothing to avoid duplicates
-                                }else{
-                                    self.reqItemList.append(item)
-                                }
-                                
-                                print(#function, "New document added : \(item)")
-                            }
-                            
-                            if docChange.type == .modified{
-                                print(#function, "Document updated : \(item)")
-                                
-//                                if (matchedIndex != nil){
-//                                    //the document object is already in the list
-//                                    //replace existing document
-//                                    self.studentList[matchedIndex!] = stud
-//                                }
-                            }
-                            
-                            if docChange.type == .removed{
-                                print(#function, "Document deleted : \(item)")
-                                
-//                                if (matchedIndex != nil){
-//                                    //the document object is still in the list
-//                                    //delete existing document
-//                                    self.studentList.remove(at: matchedIndex!)
-//                                }
-                            }
-                            
-                        }catch let err as NSError{
-                            print(#function, "Unable to access document change : \(err)")
-                        }
-                        
-                    }
-                })
-            
-        }
-        /*
-         catch let err as NSError{
-            print(#function, "Unable to retrieve \(err)" )
-        }
-         */
-        
-    }
     
-    func retrieveItemByName(iname : String){
+    func retrieveTaskByName(tname : String){
         do{
             
             self.db
-                .collection(COLLECTION_NAME)
-                .whereField("itemName", isGreaterThanOrEqualTo: iname)
+                .collection(COLLECTION_TASK)
+                .whereField("taskName", isGreaterThanOrEqualTo: tname)
                 .addSnapshotListener( { (snapshot, error) in
                     
                     guard let result = snapshot else {
-                        print(#function, "Unable to search database for the item due to error  : \(String(describing: error))")
+                        print(#function, "Unable to search database for the item due to error  : \(error)")
                         return
                     }
                     
@@ -260,10 +158,10 @@ class FireDBHelper : ObservableObject{
                     result.documentChanges.forEach{ (docChange) in
                         //try to convert the firestore document to Student object and update the studentList
                         do{
-                            let item = try docChange.document.data(as: Item.self)
+                            let task = try docChange.document.data(as: Task.self)
                             
                             if docChange.type == .added{
-                                self.itemList.append(item)
+                                self.taskList.append(task)
                             }
                         }catch let err as NSError{
                             print(#function, "Unable to obtain Item object \(err)" )
@@ -271,15 +169,12 @@ class FireDBHelper : ObservableObject{
                     }
                 })
             
-        }
-        /*
-         catch let err as NSError{
+        }catch let err as NSError{
             print(#function, "Unable to retrieve \(err)" )
         }
-         */
     }
     
-    func updateItem( updatedItemIndex : Int ){
+    func updateTask( updatedTaskIndex : Int ){
         
 //        //setData more apprpropriate if entire document needs to be updated
 //        do{
@@ -293,10 +188,10 @@ class FireDBHelper : ObservableObject{
         
         //updateData more apprpropriate if some fields of document needs to be updated
         self.db
-            .collection(COLLECTION_NAME)
-            .document(self.itemList[updatedItemIndex].id!)
-            .updateData([ATTRIBUTE_INAME : self.itemList[updatedItemIndex].itemName,
-                         ATTRIBUTE_IDESC : self.itemList[updatedItemIndex].itemDesc
+            .collection(COLLECTION_TASK)
+            .document(self.taskList[updatedTaskIndex].id!)
+            .updateData([ATTRIBUTE_TNAME : self.taskList[updatedTaskIndex].taskName,
+                         ATTRIBUTE_TDESC : self.taskList[updatedTaskIndex].taskDesc
                         ]){ error in
                 
                 if let err = error{
@@ -306,58 +201,6 @@ class FireDBHelper : ObservableObject{
                 }
                 
             }
-    }
-    func updateWidgetData() {
-           let userDefaults = UserDefaults(suiteName: "group.com.ms.CollegeDelivery")
-           do {
-               let data = try JSONEncoder().encode(itemList)
-               userDefaults?.set(data, forKey: "ItemList")
-           } catch {
-               print("Error encoding itemList: \(error)")
-           }
-       }
-    
-    func retrieveAllItemsFromLocation(locationOfItems: String){
-        do{
-            self.db
-                .collection(COLLECTION_NAME)
-                .order(by: ATTRIBUTE_INAME, descending: true)
-                .whereField("itemLoc", isEqualTo: locationOfItems)
-                .addSnapshotListener( { (snapshot, error) in
-                    guard let result = snapshot else{
-                        print(#function, "Unable to retrieve snapshot : \(String(describing: error))")
-                        return
-                    }
-                    print(#function, "Result : \(result)")
-                    result.documentChanges.forEach{ (docChange) in
-                        do{
-                            let item = try docChange.document.data(as: Item.self)
-                            print(#function, "item from db : id : \(String(describing: item.id)) name : \(item.itemName)")
-                            let matchedIndex = self.itemList.firstIndex(where: { ($0.id?.elementsEqual(item.id!))!})
-                            if docChange.type == .added{
-                                if (matchedIndex != nil){
-                                } else {
-                                    self.itemList.append(item)
-                                }
-                                print(#function, "New document added : \(item)")
-                            }
-                            if docChange.type == .modified{
-                                print(#function, "Document updated : \(item)")
-                            }
-                            if docChange.type == .removed{
-                                print(#function, "Document deleted : \(item)")
-                            }
-                        }catch let err as NSError{
-                            print(#function, "Unable to access document change : \(err)")
-                        }
-                    }
-                })
-        }
-        /*
-         catch let err as NSError {
-            print(#function, "Unable to retrieve \(err)" )
-        }
-         */
     }
     
     

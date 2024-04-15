@@ -4,7 +4,7 @@ import SwiftUI
 
 struct SummaryView: View {
     var body: some View {
-        Text("Good afternoon,\nJohnathan.")
+        Text("Good afternoon,\nTestuser.")
             .font(.largeTitle)
             .fontWeight(.bold)
             .foregroundColor(.black)

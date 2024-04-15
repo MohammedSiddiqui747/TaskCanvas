@@ -1,18 +1,23 @@
 import Foundation
 import SwiftUI
 
+
+
 struct AddItemView: View {
     @State private var selectedDate = Date()
     
-    @State private var itemname: String = "Some Calendar Event" // Pre-input mock data for username
-    @State private var password: String = "MockPassword" // Pre-input mock data for password
-    @State private var description: String = "A description and/or additional information about the calendar item." // Pre-input mock data for password
+    @State private var taskName: String = "Some Calendar Event" // Pre-input mock data for username
+    @State private var taskDesc: String = "A description and/or additional information about the calendar item." // Pre-input mock data for password
     
     @State private var selectedSegment = 0
     let options = ["Event", "Routine", "Task"]
     
     @Environment(\.presentationMode) var presentationMode
-    @State private var showingConfirmation = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    private var dbHelper = FireDBHelper.getInstance()
+    
+
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -21,7 +26,7 @@ struct AddItemView: View {
                 .fontWeight(.bold)
                 .padding(.bottom, 20)
             Text("Item Name: ")
-            TextField("ItemName", text: $itemname)
+            TextField("ItemName", text: $taskName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.bottom, 20)
         
@@ -38,13 +43,23 @@ struct AddItemView: View {
                 .padding(.bottom, 20)
             
             Text("Description: ")
-            TextEditor(text: $description)
+            TextEditor(text: $taskDesc)
                 .frame(height: 100)
             
             Spacer()
             
             Button("Add Item") {
-                showingConfirmation = true
+                if taskName.isEmpty || taskDesc.isEmpty {
+                    alertMessage = "Please fill in all fields."
+                    showAlert = true
+                } else {
+                    let formattedDate = selectedDate.formatted(.iso8601.year().month().day())
+                    
+                    let newTask = Task(taskname: taskName, taskdesc: taskDesc, tasktype: options[selectedSegment], caltype: "", taskdate: formattedDate, useremail: "") // Consider including the destination in your item model
+                    dbHelper.insertTask(task: newTask)
+                    alertMessage = "Task added successfully."
+                    showAlert = true
+                }
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
@@ -52,7 +67,7 @@ struct AddItemView: View {
             .background(Color.green)
             .cornerRadius(20)
             .shadow(radius: 10)
-            .alert(isPresented: $showingConfirmation) {
+            .alert(isPresented: $showAlert) {
                 Alert(
                     title: Text("Are you sure?"),
                     message: Text("This will take you back."),

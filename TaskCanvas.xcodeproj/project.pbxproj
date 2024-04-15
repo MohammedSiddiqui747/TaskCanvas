@@ -20,7 +20,9 @@
 		3BF687E42B96B1E10005A01B /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687E32B96B1E10005A01B /* CalendarView.swift */; };
 		3BF687E62B96B1E70005A01B /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687E52B96B1E70005A01B /* AddItemView.swift */; };
 		3BF687E82B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF687E72B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift */; };
-		E668B9642BCB7BDC0012D03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E668B9632BCB7BDC0012D03E /* GoogleService-Info.plist */; };
+		844775F02BCC633F002AF0B4 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844775EF2BCC633F002AF0B4 /* Task.swift */; };
+		844775F22BCC646E002AF0B4 /* FireDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844775F12BCC646E002AF0B4 /* FireDBHelper.swift */; };
+		844775F42BCD73EB002AF0B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844775F32BCD73EB002AF0B4 /* GoogleService-Info.plist */; };
 		E668B9672BCB7C550012D03E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E668B9662BCB7C550012D03E /* FirebaseAnalytics */; };
 		E668B9692BCB7C550012D03E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = E668B9682BCB7C550012D03E /* FirebaseAnalyticsOnDeviceConversion */; };
 		E668B96B2BCB7C550012D03E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E668B96A2BCB7C550012D03E /* FirebaseAnalyticsSwift */; };
@@ -65,7 +67,9 @@
 		3BF687E32B96B1E10005A01B /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		3BF687E52B96B1E70005A01B /* AddItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 		3BF687E72B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyAndFriendsCalendarView.swift; sourceTree = "<group>"; };
-		E668B9632BCB7BDC0012D03E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		844775EF2BCC633F002AF0B4 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		844775F12BCC646E002AF0B4 /* FireDBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireDBHelper.swift; sourceTree = "<group>"; };
+		844775F32BCD73EB002AF0B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +129,7 @@
 		3BF687C22B96AC940005A01B /* TaskCanvas */ = {
 			isa = PBXGroup;
 			children = (
-				E668B9622BCB79B40012D03E /* models */,
+				844775EC2BCC62A4002AF0B4 /* models */,
 				E668B9612BCB79A90012D03E /* helper */,
 				3BF687C32B96AC940005A01B /* TaskCanvasApp.swift */,
 				3BF687D92B96B1C00005A01B /* ContentView.swift */,
@@ -138,7 +142,7 @@
 				3BF687DF2B96B1D20005A01B /* PersonalCalendarView.swift */,
 				3BF687E72B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift */,
 				3BF687E52B96B1E70005A01B /* AddItemView.swift */,
-				E668B9632BCB7BDC0012D03E /* GoogleService-Info.plist */,
+				844775F32BCD73EB002AF0B4 /* GoogleService-Info.plist */,
 				3BF687C72B96AC950005A01B /* Assets.xcassets */,
 				3BF687C92B96AC950005A01B /* Preview Content */,
 			);
@@ -153,18 +157,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		844775EC2BCC62A4002AF0B4 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				844775EF2BCC633F002AF0B4 /* Task.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		E668B9612BCB79A90012D03E /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				844775F12BCC646E002AF0B4 /* FireDBHelper.swift */,
 			);
 			path = helper;
-			sourceTree = "<group>";
-		};
-		E668B9622BCB79B40012D03E /* models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +265,7 @@
 			files = (
 				3BF687CB2B96AC950005A01B /* Preview Assets.xcassets in Resources */,
 				3BF687C82B96AC950005A01B /* Assets.xcassets in Resources */,
-				E668B9642BCB7BDC0012D03E /* GoogleService-Info.plist in Resources */,
+				844775F42BCD73EB002AF0B4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +280,8 @@
 				3BF687D62B96B1A80005A01B /* SummaryView.swift in Sources */,
 				3BF687DA2B96B1C00005A01B /* ContentView.swift in Sources */,
 				3BF687DC2B96B1C70005A01B /* SigninView.swift in Sources */,
+				844775F22BCC646E002AF0B4 /* FireDBHelper.swift in Sources */,
+				844775F02BCC633F002AF0B4 /* Task.swift in Sources */,
 				3BF687E82B96B1FF0005A01B /* FamilyAndFriendsCalendarView.swift in Sources */,
 				3BF687D22B96B18E0005A01B /* SunkenBoxView.swift in Sources */,
 				3BF687C42B96AC940005A01B /* TaskCanvasApp.swift in Sources */,
@@ -414,7 +422,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TaskCanvas/Preview Content\"";
-				DEVELOPMENT_TEAM = U63JDD8A5K;
+				DEVELOPMENT_TEAM = 65DY6FY3W5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -427,7 +435,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nf.TaskCanvas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peakendeavors.taskcanvas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -443,7 +451,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TaskCanvas/Preview Content\"";
-				DEVELOPMENT_TEAM = U63JDD8A5K;
+				DEVELOPMENT_TEAM = 65DY6FY3W5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -456,7 +464,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nf.TaskCanvas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peakendeavors.taskcanvas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
